@@ -36,4 +36,6 @@ Container - Root directory( like C:, D: etc) -- data is saved here
 Dev -- in code -- they can connect to storage account
 DE - pull/push data to Storage through data factory --- automated manner through some pipelines
 
+Hierarchy : Enterprise->Subscription->Resource Group->Resources
+
  
