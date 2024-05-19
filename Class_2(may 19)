@@ -1,0 +1,38 @@
+Storage Account - It is basic service in aure.
+similar service in AWS is S3 bucket, in GCP it is known as google storage account
+we uploads data automatically to storage account from database through a conditional pipeline....DB ---> ADF ----> Storage 
+
+Types of Storage account
+Blob Storage/ADLS  -- BLOB Binary large object
+File Share
+Queues
+Aure Tables
+
+Creation of free trial account and access portal.azure.com
+Cloud shell - access through command prompt ( cmd can be opened directly in browser or linked to desktop app)
+Notifications tab, settings tab -- overview
+
+As a DE in real world, we are not going to create storage account(or any other services) in MNCs.. It's responsibility of admins or infra teams in general. DE has to raise ticket and admin team should create
+Create Storage Account 
+  - Subscription - Based on project, sub will be activated.
+  - Resource group - to keep resources logically together..could be based on Env, project, modules etc
+  - Name - has to be unique
+  - Region - This is where our data will be stored
+  - Advance Tab 
+    - Access Tier : 3 types based on cost --> Hot ; Cool ; Archive... (FYI - we can change tier after storage account creation as well) Through Data lifecycle management, we can add rule..like based on frequecy of data being used, it's going to switch to different access tiers
+            - Hot - Read and write data faster..It is useful for frequent read and write...high price
+            - Cool - to access less frequently..has more latency...May be once, twice in a month(not much frequent)...like company policy reports..lo price
+            - archive - just for sake of storage..very slowly loads data...very less price
+   - Encryption Tab
+      - Azure does encryption at two places....
+               1. At the time of Rest  -- after transfer, stored data is encrypted
+               2. At the time of transit -- while transfer from our machine to cloud
+  - Data Protection / Recovery
+      - We have soft delete option..Based on company policy these has to be enabled and give days
+      - we can see deleted blobs or files
+
+Container - Root directory( like C:, D: etc) -- data is saved here
+Dev -- in code -- they can connect to storage account
+DE - pull/push data to Storage through data factory --- automated manner through some pipelines
+
+ 
