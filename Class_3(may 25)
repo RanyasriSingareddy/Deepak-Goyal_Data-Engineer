@@ -1,0 +1,30 @@
+Azure Data Lake Storage --It is azure storage service here we can dump all files similar to BLOB with fe differences
+To create Aure Data Lake storage :
+All steps are similar to blob storage..one step makes difference (Enable hierarical namespace)
+We can modify BLOB to ADLS as well , in prop just enable hierarical namespace
+Hierarical namespace is complemented by Data Lake Storage Gen2 endpoint enables file and directory semantics, accelerates big data analytics workloads and enables access control lists(ACLs)
+
+Data stored in ADLS is used to perform analysis of big data fast compared to BLOB..So if data has to be used for analytics, then it should be on ADLS
+Once ADLS account is created, we have to create container and then files can be uploaded into container
+In Blob, we don't have an option to create directory in container whereas in ADLS , we have "create directory" option..same like file explorer, we can create folders->sub-folders
+
+In most companies, DE is not the one who creates storage accounts, admins should do it
+----------------------------
+If any application has to connect with storage account, then authorization/authencation can be done in two ways
+- Access keys  ( it is available under security+networking) --> we have to provide storage acc name and access key. It gives full access(Read, write, delete etc) so it's not recomended to give access keys.
+There are two keys(Key1 and Key2)
+Ex: if Java/python code has to connect with storage account, then we give storage acc and access key..they put in connection string section
+- SAS token(Shared Access Signature) : ( it is available under security+networking) - Unlike Access key, we can define and limit access with it
+After selecting the required options, click on generate SAS token.Once token is create,we can provide it for connecting any app with storage acc
+In real time, DE will not have access to generate or view access key or SAS tokens. It's again with admin for security concern
+If incase, DE want access key values, it will be stored through key vault by admins
+------------------------------------
+If access has to be provided to some external resource like someone from other project to the ADLS , then it will be done through IAM. we can give according to the role
+--------------------------------------
+Different types of storage services
+1. File Share service -- This can be used for sharing files..something like map drive in File explorer.. Protocol used in File share service is SMB protocol. Port which it access is 445
+(Normal BLOB or ADLS uses http protocol)
+To access file share, our machine shouldn't have firewall which restricts port 445..For this, deepak has create a VM.
+To access file share drive created in azure, we have to map it to drive similar to fildrop..while creating a mapping network, in Folder - we have to File share path from azure portal ( under storage account - file share service, click on
+connect--> Show script - Take fileshare link) then it asks for creds..Go to Access keys - username will be storage acc name and pw will be key..copy it and paste.
+Now whatever is uploaded in Fileshare, it can be viewed in VM's netork drive
