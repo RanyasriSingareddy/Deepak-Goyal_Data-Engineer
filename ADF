@@ -17,5 +17,60 @@ Dataware house.
 - DE has to perform ETL process...They may extract data from SQL server(on-prem) or Rest API
 or CSV or JSON file or SFTP or FTP server or Salesforce DB or Dynamic 365 etc and do some transformation
 and load it to Cloud which is nothing but to Data lake
-- 
+-------------------------------
+Creation of ADF account
+- Search for Data Factory- Create - Give resouce group and Subscription, region etc..Once it is deployed, it redirects to ADF studio
+- Left Side menu, we have Home, Pencil Icon(where we have features of creating pipeline), Monitoring, Manage and learning center
+- In a project, we may have single ADF account and DE created 100s of pipelines in it
+- DB(Source)-Linked Servie-Dataset(Rows/Col)-Copy( Activity)-Dataset(csv)-Linked Service-ADLS(Dest)
+- Linked Service -> should be both on source and dest side..carries source details and authentication(which allows to read and write)
+
+Go to the ADF studio and create your first pipeline name: Copy_ProductTable_To_CSV. 
+In the newly created SQL DB there is one built in SalesLt.Product table.
+Copy the Product table data to CSV file in 'landing/CSV' folder in ADLS using the ADF.
+Prerequisites
+Azure Subscription: Ensure you have an active Azure subscription.
+Azure SQL Database: Your SQL Database should have the SalesLt.Product table.
+Azure Data Lake Storage (ADLS): Create an ADLS Gen2 account and a container (e.g., landing) with a folder named CSV.
+
+STEP 1: Create Linked Services
+Create a Linked Service to Azure SQL Database:
+·     In the ADF Studio, go to the "Manage" tab (gear icon).
+·     Under "Connections", click on "Linked services".
+·     Click "New" and select "Azure SQL Database".
+·     Configure the connection with your SQL Database details (Server name, Database name, User name, Password).
+·     Test the connection and then click "Create".
+
+Create a Linked Service to ADLS:
+In the same "Linked services" section, click "New" and select "Azure Data Lake Storage Gen2".
+Configure the connection with your ADLS account details (Account selection method, Storage account name, Authentication method).
+Test the connection and then click "Create".
+
+STEP 2: Create Datasets
+Create a Dataset for SQL Database:
+·     Go to the "Author" tab (pen icon) and click on "Datasets".
+·     Click "New dataset" and choose "Azure SQL Database".
+·     Select your previously created Azure SQL Database linked service.
+·     Select the SalesLt.Product table.
+·     Name the dataset.
+·     Click "OK".
+Create a Dataset for ADLS (CSV):
+·     Click "New dataset" and choose "Azure Data Lake Storage Gen2".
+·     Select "DelimitedText" as the format.
+·     Select your previously created ADLS linked service.
+·     Enter the file path (landing/CSV).
+·     Configure the dataset properties (Column delimiter, first row as header, etc.).
+·     Name the dataset.
+·     Click "OK".
+
+STEP 3: Create a New Pipeline
+In the "Author" tab, click on "Pipelines" and then "New pipeline".
+Name the pipeline Copy_ProductTable_To_CSV.
+Add a Copy Data Activity:
+Drag the "Copy data" activity from the activities pane to the pipeline canvas.
+Click on the "Copy data" activity to configure it.
+In the "Source" tab, select the Product_table_sql_db.
+In the "Sink" tab, select the Product_table_adls_csv.
+
+Once the pipeline runs successfully in debug mode, click "Publish all" to publish the pipeline.
 - 
