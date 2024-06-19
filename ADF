@@ -13,6 +13,9 @@ In Airflow, it is open source(not proprietary of Azure or AWS) and python code h
 - Ex of OLTP - MySQL, SQL Server, PostGre, IBM DB2, Oracle
 - OLAP - Online Analyis Processing - BI/Data Analyst has to do some analysis and that will be on historical data. They have to process huge amount of data. Hence a big data base is created for it and it's known as 
 Dataware house. 
-
+- Process through which data is moved from OLTP to OLAP is ETL and it can be synced on timely basis 
+- DE has to perform ETL process...They may extract data from SQL server(on-prem) or Rest API
+or CSV or JSON file or SFTP or FTP server or Salesforce DB or Dynamic 365 etc and do some transformation
+and load it to Cloud which is nothing but to Data lake
 - 
 - 
