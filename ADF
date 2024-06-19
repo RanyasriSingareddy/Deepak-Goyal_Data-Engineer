@@ -1,0 +1,18 @@
+Azure Data Factory is Paas service()
+PaaS : Platform as a Service, also known as PaaS, is a type of cloud computing service model that offers a flexible, scalable cloud platform to develop, deploy, run, and manage apps. PaaS provides everything developers need for application development without
+the headaches of updating the operating system and development tools or maintaining hardware.
+
+ADF is used to create data pipelines.
+Airflow and AWS glue are also used to create data pipelines
+In Airflow, it is open source(not proprietary of Azure or AWS) and python code has to be written for creating pipelines
+
+- ADF is used to create data pipelines..we create a workflow through which we move data
+- It is also called as Orchestration tool(it's like an ETL tool)
+- Old ETL tools  -> SSIS, Informatica,IBMs Page
+- OLTP Database - Online Transactional DB. we want fast read and write with small size of data
+- Ex of OLTP - MySQL, SQL Server, PostGre, IBM DB2, Oracle
+- OLAP - Online Analyis Processing - BI/Data Analyst has to do some analysis and that will be on historical data. They have to process huge amount of data. Hence a big data base is created for it and it's known as 
+Dataware house. 
+
+- 
+- 
