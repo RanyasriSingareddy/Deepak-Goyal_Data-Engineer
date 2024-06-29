@@ -1,0 +1,11 @@
+Triggers
+- If we want to execute the pipeline on timley manner automatically, we use triggers
+- Add Triggger-?Trigger Now....Pipeline will execute immediately bt will not be displayed..It will be visible under pipeline runs--
+Pipeline runs--Debug--> it shows all the executioon done
+While practising, after creation and testing of trigger, stop it or remove it and publish..bcoz it's gpiong to cost high if it goes on triggering 
+Trigger is of four types
+- Scheduled Trigger--> It can trigger multiple pipelines..Can be re-usable..It is irresponsible trigger..I doesn't care what's happening to pipeline..It just starts pipeline and doesn't care if it's executing properly or not
+- Tumbling window Trigger --> It is used for streaming data
+- Custom event Trigger
+- Storage event truigger
+- If we have multiple pipelines and we want to trigger all pipelines, 
